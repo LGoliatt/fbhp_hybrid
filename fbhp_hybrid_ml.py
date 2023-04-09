@@ -1166,7 +1166,6 @@ import glob as gl
 import pylab as pl
 import os
 
-basename='gwo_'
 basename='sga_'
 
 #%%
@@ -1192,7 +1191,6 @@ for run in range(run0, n_runs):
         
         os.system('mkdir  '+path)
         
-        #for (target,y_train,y_test) in zip(dataset['target_names'], dataset['y_train'], dataset['y_test']):                        
         for tk, tn in enumerate(dataset['target_names']):
             print (tk, tn)
             dataset_name = dataset['name']+'-'+tn
@@ -1279,45 +1277,7 @@ for run in range(run0, n_runs):
             lb_gmdh=[       0., 0,   1, 0, ] #+ [0.0]*n_features
             ub_gmdh=[       3., 1,   8,10, ] #+ [1.0]*n_features
             #------------------------------------------------         
-            
-            ##------------------------------------------------------------------         
-            #lb_hgb  = [ 1e-6,   1,   0,] #+ [0.0]*n_features
-            #ub_hgb  = [    1, 800, 0.5,] #+ [1.0]*n_features
-            ##------------------------------------------------------------------         
-            #lb_rxe = [1e-0,   0.00,   0.] #+ [0.0]*n_features
-            #ub_rxe = [2e+2,   2.00,   2.] #+ [1.0]*n_features
-            ##------------------------------------------------------------------         
-            #lb_vc  = [ 0]*2 + [ 0,   0,]#+ [0.0]*n_features
-            #ub_vc  = [ 1]*2 + [ 9, 300,]#+ [1.0]*n_features
-            ##------------------------------------------------------------------         
-            #lb_bag  = [0,  10, ]#+ [0.0]*n_features
-            #ub_bag  = [1, 900, ]#+ [1.0]*n_features
-            ##------------------------------------------------------------------         
-            #lb_dt  = [1, 0, 0,  1, ]#+ [0.0]*n_features
-            #ub_dt  = [5, 1, 1, 50, ]#+ [1.0]*n_features
-            ##------------------------------------------------------------------         
-            #lb_krr=[0, 0., 0,   0., 1,   0,  1e-6]#+ [0.0]*n_features
-            #ub_krr=[5, 1., 4,  10., 5, 1e2,  1e+3]#+ [1.0]*n_features
-            ##------------------------------------------------------------------         
-            #lb_cat = [0.0,  10,  1,    0.,  1., 0.0]#+ [0.0]*n_features
-            #ub_cat = [1.0, 500, 16, 1000., 50., 1.0]#+ [1.0]*n_features
-            ##------------------------------------------------------------------         
-            #lb_pr = [0, 1, 0, 1e-6, 0, 0,] #+ [0.0]*n_features
-            #ub_pr = [3, 5, 1, 2e+0, 1, 1,] #  + [0.0]*n_features
-            ##------------------------------------------------------------------         
-            #lb_vr  = lb_en #+ lb_svm + lb_elm #+ [0.0]*n_features
-            #ub_vr  = ub_en #+ ub_svm + ub_elm #+ [1.0]*n_features
-            ##------------------------------------------------------------------         
-
-#            if task=='classification':
-#                le = preprocessing.LabelEncoder()
-#                #le=preprocessing.LabelBinarizer()
-#                le.fit(y_)
-#                y=le.transform(y_)
-#            else:
-#                y=y_.copy()evo_ml___run_00_british_columbia__day_ahead_ml_____mars_______sga_______________energy_kwh
-#            #---------g---------------------------------------------------------         
-            args = (X_train, y_train, X_test, y_test, 'eval', task,  n_splits, 
+                 args = (X_train, y_train, X_test, y_test, 'eval', task,  n_splits, 
                     int(random_seed), scoring, target, 
                     n_samples_train, n_samples_test, n_features,)
             #------------------------------------------------------------------         
@@ -1370,7 +1330,7 @@ for run in range(run0, n_runs):
 
 
                 #algo=SSA(fun, args, lb, ub, max_iter=max_iter, pop_size=pop_size)
-                #algo.evolve(True)
+                #algo.evolve(True) 
                 
                                 
                 #algo = pg.algorithm(pg.nsga2(gen=max_iter,  cr=0.85, m=0.20, seed=random_seed))
