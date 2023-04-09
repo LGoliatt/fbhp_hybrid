@@ -295,7 +295,5 @@ for run in range(run0, n_runs):
                 s+='Run                        : '+str(run)+'\n'
                 s+='Random seed                : '+str(random_seed)+'\n'
 
-
-
                 print(s)                
 ##%%----------------------------------------------------------------------------
