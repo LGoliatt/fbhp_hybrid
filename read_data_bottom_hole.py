@@ -13,6 +13,23 @@ def read_ayoub(
                             expand_features=False, 
                             var_set=None,
                             ):
+    """
+Reads and processes the Ayoub dataset.
+
+    This method reads data from a JSON file, splits it into training and testing sets,
+    performs descriptive statistics, generates correlation heatmaps, and prepares
+    the data for regression tasks.
+
+    Args:
+        plot (bool, optional):  Whether to generate plots. Defaults to False.
+        expand_features (bool, optional): Whether to expand features. Defaults to False.
+        var_set (int, optional): Specifies a subset of variables to use. 
+                                  Defaults to None.
+
+    Returns:
+        dict: A dictionary containing the processed regression data, including training and testing sets,
+              feature names, target names, and other relevant information.
+    """
     #%% 
     filename='./data/ayoub/ayoub.json'
     data = pd.read_json(filename)

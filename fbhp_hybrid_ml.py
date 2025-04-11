@@ -27,16 +27,51 @@ else:
     run0, n_runs = 0,50
 #%%----------------------------------------------------------------------------   
 def accuracy_log(y_true, y_pred):
+    """
+Calculates the percentage of predictions within a logarithmic error range.
+
+    Args:
+        y_true: The ground truth values.
+        y_pred: The predicted values.
+
+    Returns:
+        float: The accuracy score as a percentage, representing the proportion of 
+               predictions where the absolute value of the base-10 logarithm of 
+               the ratio between true and predicted values is less than 0.3.
+    """
     y_true=np.abs(np.array(y_true))
     y_pred=np.abs(np.array(y_pred))
     return (np.abs(np.log10(y_true/y_pred))<0.3).sum()/len(y_true)*100
 
 def rms(y_true, y_pred):
+    """
+Calculates the Root Mean Square (RMS) error between two arrays.
+
+    Args:
+        y_true: The array of true values.
+        y_pred: The array of predicted values.
+
+    Returns:
+        float: The RMS error value.
+    """
     y_true=np.abs(np.array(y_true))
     y_pred=np.abs(np.array(y_pred))
     return ( (np.log10(y_pred/y_true)**2).sum()/len(y_true) )**0.5
 
 def model_base_evaluation(x, data_args, estimator_args,):
+    
+  """
+Evaluates or runs a model based on the provided flags.
+
+    Args:
+        x: Model parameters.
+        data_args: Data-related arguments including train/test splits and scoring metrics.
+        estimator_args: Estimator-related arguments including name and parameters.
+
+    Returns:
+        None: If flag is 'eval'.
+        dict: A dictionary containing evaluation results if flag is 'run'.  The dictionary includes true and predicted values for training and testing sets, estimator parameters, model parameters, the active variables, seed, number of splits, and output target.
+    """
     
   (X_train_, y_train, X_test_, y_test, flag, task,  n_splits, 
      random_seed, scoring, target, 
@@ -68,6 +103,20 @@ def model_base_evaluation(x, data_args, estimator_args,):
 #%%----------------------------------------------------------------------------     
 def fun_xgb_fs(x,*data_args):
   
+  """
+Evaluates an XGBoost model with hyperparameters defined by the input vector.
+
+  Args:
+    x: A vector containing the hyperparameters for the XGBoost model 
+       (learning_rate, n_estimators, max_depth, reg_lambda).
+    data_args: Variable length argument list containing training and testing data, 
+               flags, task details, cross-validation parameters, random seed, 
+               scoring metric, target variable, and sample sizes.
+
+  Returns:
+    None: The function returns the output of `model_base_evaluation`.
+  """
+  
   #print(data_args,'1>>')  
   (X_train, y_train, X_test, y_test, flag, task,  n_splits, 
                     random_seed, scoring, target,
@@ -92,6 +141,18 @@ def fun_xgb_fs(x,*data_args):
   return model_base_evaluation(x, data_args, estimator_args, )
 #%%----------------------------------------------------------------------------     
 def fun_svr_fs(x,*data_args):
+  """
+Evaluates an SVR model with specified parameters.
+
+  Args:
+    x: Optimization variables for gamma, C, and epsilon.
+    data_args: A tuple containing training/testing data, flags, task details, 
+               cross-validation settings, scoring metrics, target variable information,
+               and dataset sizes/features.
+
+  Returns:
+    None: The function returns the output of `model_base_evaluation`.
+  """
   (X_train, y_train, X_test, y_test, flag, task,  n_splits, 
                     random_seed, scoring, target,
                     n_samples_train, n_samples_test, n_features) = data_args
@@ -122,6 +183,18 @@ def fun_svr_fs(x,*data_args):
   return model_base_evaluation(x, data_args, estimator_args, )
 #%%----------------------------------------------------------------------------     
 def fun_elm_fs(x,*data_args):
+  """
+Evaluates an Extreme Learning Machine (ELM) regressor with specified parameters.
+
+  Args:
+    x: A list or array containing the optimization variables for ELM.
+    data_args: Tuple of arguments including training and testing data, flags, 
+               task details, cross-validation settings, random seed, scoring metric,
+               target variable, and dataset sizes/features.
+
+  Returns:
+    None: The function returns the output of `model_base_evaluation`, which is not explicitly defined here but presumably contains evaluation results.
+  """
   (X_train, y_train, X_test, y_test, flag, task,  n_splits, 
                     random_seed, scoring, target,
                     n_samples_train, n_samples_test, n_features) = data_args
@@ -157,6 +230,19 @@ def fun_elm_fs(x,*data_args):
 
 #------------------------------------------------------------------------------
 def fun_mars_fs(x,*data_args):
+  """
+Trains and evaluates a MARS model with specified parameters.
+
+  Args:
+    x: A list or array containing the hyperparameters for the MARS model 
+       (max_degree, penalty, max_terms).
+    data_args: Tuple of arguments to be passed to the evaluation function.
+               Includes training and testing data, flags, task details, 
+               and other relevant parameters.
+
+  Returns:
+    None: The method returns the output of `model_base_evaluation`.
+  """
   (X_train, y_train, X_test, y_test, flag, task,  n_splits, 
                     random_seed, scoring, target,
                     n_samples_train, n_samples_test, n_features) = data_args
