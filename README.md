@@ -1,4 +1,4 @@
-<p align="center"><h1 align="center">FBHP_HYBRID</h1></p>
+<p align="center"><h1 align="center">Development of hybrid computational data-intelligence model for flowing bottom-hole pressure of oil wells: New strategy for oil reservoir management and monitoring</h1></p>
 <p align="center">
 	<a href="https://itmo.ru/"><img src="https://raw.githubusercontent.com/aimclub/open-source-ops/43bb283758b43d75ec1df0a6bb4ae3eb20066323/badges/ITMO_badge.svg"></a>
 	<img src="https://img.shields.io/github/license/LGoliatt/fbhp_hybrid?style=default&logo=opensourceinitiative&logoColor=white&color=blue" alt="license">
@@ -16,7 +16,10 @@
 ## Overview
 
 <overview>
-fbhphybrid provides accurate bottom-hole pressure predictions for oil wells, aiding in reservoir management and optimizing well performance. This solution benefits energy companies and petroleum engineers by improving operational efficiency and maximizing resource extraction through data-driven insights.
+Among several metric parameters concerning the assessment of oil and gas well production, the flowing bottom-hole pressure (FBHP) is considered essential. Accurate prediction of FBHP is crucial for petroleum engineering and management. Several related parameters are associated with the FBHP magnitude influence; thus, proper inspection of those parameters is another vital concern. This research proposes a hybrid modeling framework based on the hybridization of machine learning (ML) models (i.e., Extreme Learning Machine (ELM), Support Vector Machine Regressor (SVR), Extreme Gradient Boosting (XGB), and Multivariate Adaptive Regression Spline (MARS)) and nature-inspired Differential Evolutional (DE) optimization for FBHP prediction. The adjustment of the internal parameters of the ML-based models and the input feature selection is formulated as an incremental learning problem that is solved by the evolutionary algorithm. Problem-specific samples were collected from the open-source literature for this investigation. Modeling results are adaptable, automatically determining the most relevant variables for the context of the ML model. The adaptive polynomial structure of hybridized MARS model attained the best average performance for the FBHP modeling with correlation (R = 0.94) and minimum root mean square (RMSE = 97.88). The proposed modeling framework produces an alternative efficient computer aid model for FBHP prediction, resulting in reliable automated technology to assist oil and gas well management.
+
+https://doi.org/10.1016/j.fuel.2023.128623
+ 
 </overview>
 
 ---
